@@ -1,40 +1,46 @@
+import java.util.Scanner;
 
 
-public class Giai_phuong_trinh_bac_2 {
-    public static void main(String[] args){
-        Scanner s=new Scanner(System.in);
-        System.out.prinfln("a= "); float a=s.nextFloat();
-        System.out.prinfln("b= "); float b=s.nextFloat();
-        System.out.prinfln("c= "); float c=s.nextFloat();
-        if(a==0){
-            if(b==0){
-                if(c==0)
-                    System.out.println("PT VSN");
-                    else System.out.println("PT vo nghiem");
+public class Giai_phuong_trinh_bac_2{
+    private static Scanner scanner = new Scanner(System.in);
 
+    public static void main(String[] args) {
+        System.out.print("Nhập hệ số bậc 2, a = ");
+        float a = scanner.nextFloat();
+        System.out.print("Nhập hệ số bậc 1, b = ");
+        float b = scanner.nextFloat();
+        System.out.print("Nhập hằng số tự do, c = ");
+        float c = scanner.nextFloat();
+        Giai_phuong_trinh_bac_2.giaiPTBac2(a, b, c);
+    }
+
+    public static void giaiPTBac2(float a, float b, float c) {
+        // kiểm tra các hệ số
+        if (a == 0) {
+            if (b == 0) {
+                System.out.println("Phương trình vô nghiệm!");
+            } else {
+                System.out.println("Phương trình có một nghiệm: "
+                        + "x = " + (-c / b));
             }
-            else{
-                float x=(float)(-b)/c;
-                System.out.println("Nghiem cua phuong trinh la x=%.1f",x);
-
-            }
+            return;
         }
-        else{
-            float delta=b*b-4*a*c;
-            if(delta<0){
-                System.out.println("PT VO NGHIEM");
-
-            }
-            else if(delta==0){
-                System.out.println("PT CO NGHIEM KEP x=%.1f",-b/(2*a));
-            }
-            else{
-                float x1=(float)(((-b)+Math.sqrt(delta))/2*a);
-                float x2=(float)(((-b)-Math.sqrt(delta))/2*a);
-                System.out.println("x1=%.1f",x1);
-                System.out.println("x1=%.1f",x2);
-
-            }
+        // tính delta
+        float delta = b*b - 4*a*c;
+        float x1;
+        float x2;
+        // tính nghiệm
+        if (delta > 0) {
+            x1 = (float) ((-b + Math.sqrt(delta)) / (2*a));
+            x2 = (float) ((-b - Math.sqrt(delta)) / (2*a));
+            System.out.println("Phương trình có 2 nghiệm là: "
+                    + "x1 = " + x1 + " và x2 = " + x2);
+        } else if (delta == 0) {
+            x1 = (-b / (2 * a));
+            System.out.println("Phương trình có nghiệm kép: "
+                    + "x1 = x2 = " + x1);
+        } else {
+            System.out.println("Phương trình vô nghiệm!");
         }
     }
 }
