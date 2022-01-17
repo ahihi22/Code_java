@@ -1,4 +1,4 @@
-package Bai_thuc_hanh_so_2;
+
 
 public class Giai_phuong_trinh_bac_2 {
     public static void main(String[] args){
